@@ -1,0 +1,14 @@
+on:
+  pull_request
+
+name: Envs
+jobs:
+  print-envs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: pull_request | Get the target branch
+      run: |
+        echo "GITHUB_REF: $GITHUB_REF"
+        echo "GITHUB_HEAD_REF: $GITHUB_HEAD_REF"
+        echo "GITHUB_REF_NAME: $GITHUB_REF_NAME"
+        echo "github.event.pull_request.base.ref: ${{ github.event.pull_request.base.ref }}"
