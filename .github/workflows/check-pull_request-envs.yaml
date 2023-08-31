@@ -8,6 +8,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 0
+
+    - name: Rebase
+      run: |
+        git config user.email "user@email.com"
+        git config user.name "User Name"
+        git remote add upstream https://github.com/fidencio-gha-tests/test-stuff
+        git remote update upstream
+        git rebase upstream/main
 
     - name: pull_request | Get the target branch
       run: |
