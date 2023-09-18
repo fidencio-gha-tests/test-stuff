@@ -16,3 +16,10 @@ jobs:
         echo "GITHUB_REF_NAME: $GITHUB_REF_NAME"
         echo "github.event.pull_request.base.ref: ${{ github.event.pull_request.base.ref }}"
         cat LICENSE
+
+    - name: Log into ghcr.io
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
